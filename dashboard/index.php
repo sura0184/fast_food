@@ -1,3 +1,7 @@
+<?php
+include '../include/db.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -394,7 +398,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../user/add_user.php" class="nav-link">
+                <a href="../user/list_user.php" class="nav-link">
                     <i class="fas fa-users"></i>
                     <span>Staff</span>
                 </a>
@@ -425,7 +429,7 @@
         <div class="top-bar">
             <div class="page-title">
                 <h1>Dashboard Overview</h1>
-                <p>Welcome back! Here's what's happening today.</p>
+                <p>Welcome back! <?php echo $_SESSION['username']; ?></p>
             </div>
             <div class="date-time">
                 <i class="far fa-calendar"></i> May 15, 2023
