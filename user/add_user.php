@@ -292,7 +292,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <h1><i class="fas fa-user-plus"></i> Add New User</h1>
             <p>Create a new user account for the system</p>
         </div>
-        <a href="../auth/login.php">logout</a>
+        <a href="../auth/logout.php">logout</a>
         <div class="form-container">
             <form id="userForm" method="POST" >
                 <div class="form-group">

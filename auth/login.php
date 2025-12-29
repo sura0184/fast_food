@@ -5,6 +5,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    if(empty($username) || empty($password)){
+        $error = "Please fill in all fields.";
+    
+    }else{
+        
     $sql = "SELECT * FROM users WHERE username = :username ";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username);
@@ -19,6 +24,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }else{
         $error = "Invalid username or password.";
 }
+
+    }
+
 }
 ?>
 
@@ -409,33 +417,26 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             </div>
 
             <?php if($error): ?>
-            <div class="error"><?= $error ?> </div>
+                <div class="error-message"><?php echo $error; ?></div>
             <?php endif; ?>
+
+            
             
             <form class="login-form" id="loginForm" action="#" method="POST">
                 <div class="input-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="username" name="username" placeholder="Username or Email" required>
+                    <input type="text" id="username" name="username" placeholder="Username" >
                 </div>
                 
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="password" name="password" placeholder="Password">
                 </div>
                 
-                <div class="remember-forgot">
-                    <div class="remember">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember me</label>
-                    </div>
-                    <a href="#" class="forgot-password">Forgot password?</a>
-                </div>
                 
                 <button type="submit" class="login-btn">Login <i class="fas fa-sign-in-alt"></i></button>
                 
-                <div class="login-footer">
-                    <p>Don't have an account? <a href="#" id="registerLink">Contact Admin</a></p>
-                </div>
+                
             </form>
         </div>
     </div>
@@ -445,6 +446,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <i class="fas fa-check-circle"></i>
         <span id="notificationText">Login successful! Redirecting...</span>
     </div>
+
+    
     
    
 </body>
